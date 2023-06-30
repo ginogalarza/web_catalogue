@@ -1,3 +1,82 @@
+
+@section('body')
+    <div class="card">
+        <div class="card-body p-4"> 
+            <div class="text-center mt-2">
+                <h5 class="text-primary">¡Bienvenido de nuevo!</h5>
+                <p class="text-muted">Inicia sesión para continuar con Motos.</p>
+            </div>
+            <div class="p-2 mt-4">
+                <form method="POST" action="{{ route('login') }}">
+                    @csrf
+                    <div class="mb-3">
+                        <label class="form-label" for="email">{{ __('Email') }}</label>
+                        <input type="text" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="Ingresar correo electronico" required autofocus autocomplete="username" aria-describedby="validation-email">
+                        @error('email')
+                            <div id="validation-email" class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+
+                    <div class="mb-3">
+                        @if (Route::has('password.request'))
+                            <div class="float-end">
+                                <a href="{{ route('password.request') }}" class="text-muted">{{ __('Forgot your password?') }}</a>
+                            </div>
+                        @endif
+                        <label class="form-label" for="password">{{ __('Password') }}</label>
+                        <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" placeholder="Ingresar contraseña" required autocomplete="current-password" aria-describedby="validation-password">
+                        @error('password')
+                            <div id="validation-password" class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="remember" name="remember">
+                        <label class="form-check-label" for="remember">{{ __('Remember me') }}</label>
+                    </div>
+                    
+                    <div class="mt-3 text-end">
+                        <button class="btn btn-primary w-sm waves-effect waves-light" type="submit">{{ __('Log in') }}</button>
+                    </div>
+
+                    <div class="mt-4 text-center">
+                        <div class="signin-other-title">
+                            <h5 class="font-size-14 mb-3 title">Iniciar Sesión con</h5>
+                        </div>
+                        
+                        <ul class="list-inline">
+                            <li class="list-inline-item">
+                                <a href="javascript:void()" class="social-list-item bg-primary text-white border-primary">
+                                    <i class="mdi mdi-facebook"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="javascript:void()" class="social-list-item bg-info text-white border-info">
+                                    <i class="mdi mdi-twitter"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="javascript:void()" class="social-list-item bg-danger text-white border-danger">
+                                    <i class="mdi mdi-google"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="mt-4 text-center">
+                        <p class="mb-0">Don't have an account ? 
+                            <a href="auth-register.html" class="fw-medium text-primary"> Signup now </a> 
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+@endsection
 <x-guest-layout>
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
