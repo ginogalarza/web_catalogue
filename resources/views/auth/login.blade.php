@@ -1,5 +1,5 @@
 
-@section('body')
+<x-guest-layout>
     <div class="card">
         <div class="card-body p-4"> 
             <div class="text-center mt-2">
@@ -68,15 +68,15 @@
                     </div>
 
                     <div class="mt-4 text-center">
-                        <p class="mb-0">Don't have an account ? 
-                            <a href="auth-register.html" class="fw-medium text-primary"> Signup now </a> 
+                        <p class="mb-0">¿No tienes una cuenta aun? 
+                            <a href="{{ route('register') }}" class="fw-medium text-primary"> Registrate </a> 
                         </p>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-@endsection
+</x-guest-layout>{{-- 
 <x-guest-layout>
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
@@ -123,4 +123,4 @@
             </x-primary-button>
         </div>
     </form>
-</x-guest-layout>
+</x-guest-layout> --}}

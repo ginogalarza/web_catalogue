@@ -33,13 +33,10 @@
                 </div>
                 <div class="row align-items-center justify-content-center">
                     <div class="col-md-8 col-lg-6 col-xl-5">
-                        @section('body')
-                            Nada que mostrar.
-                        @show
+                        {{ $slot }}
                         <div class="mt-5 text-center">
-                            <p>© {{ date('Y') }} Minible. Crafted with <i class="mdi mdi-heart text-danger"></i> Gino</p>
+                            <p>© {{ date('Y') }} Creador por <i class="mdi mdi-heart text-danger"></i> Motos</p>
                         </div>
-
                     </div>
                 </div>
                 <!-- end row -->
@@ -61,7 +58,7 @@
     </body>
 </html>
 
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
@@ -75,19 +72,14 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
         <!-- Scripts -->
-        {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans text-gray-900 antialiased">
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
-            <div>
-                <a href="/">
-                    <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-                </a>
-            </div>
-
             <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
-                {{ $slot }}
+                
             </div>
         </div>
     </body>
 </html>
+ --}}
