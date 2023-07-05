@@ -1,44 +1,68 @@
 <x-guest-layout>
-    <div class="card">
-                           
+    <div class="card">          
         <div class="card-body p-4"> 
 
             <div class="text-center mt-2">
-                <h5 class="text-primary">Register Account</h5>
-                <p class="text-muted">Get your free Minible account now.</p>
+                <h5 class="text-primary">Registrar cuenta</h5>
+                <p class="text-muted">Obtenga ahora su cuenta gratuita en Motos..</p>
             </div>
             <div class="p-2 mt-4">
-                <form action="https://themesbrand.com/minible/layouts/index.html">
-
+                <form method="POST" action="{{ route('register') }}">
+                    @csrf
                     <div class="mb-3">
-                        <label class="form-label" for="useremail">Email</label>
-                        <input type="email" class="form-control" id="useremail" placeholder="Enter email">        
+                        <label class="form-label" for="name">{{ __('Name') }}</label>
+                        <input type="text" class="form-control  @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name') }}" placeholder="Ingresar nombre" required autofocus autocomplete="name" aria-describedby="validation-name">
+                        @error('name')
+                            <div id="validation-name" class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label" for="username">Username</label>
-                        <input type="text" class="form-control" id="username" placeholder="Enter username">
+                        <label class="form-label" for="email">{{ __('Email') }}</label>
+                        <input type="email" class="form-control  @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}" placeholder="Ingresar correo electronico" required autocomplete="username" aria-describedby="validation-email">
+                        @error('email')
+                            <div id="validation-email" class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label" for="userpassword">Password</label>
-                        <input type="password" class="form-control" id="userpassword" placeholder="Enter password">        
+                        <label class="form-label" for="password">{{ __('Password') }}</label>
+                        <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" required autocomplete="new-password" aria-describedby="validation-password">
+                        @error('password')
+                            <div id="validation-password" class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
 
-                    <div class="form-check">
+                    <div class="mb-3">
+                        <label class="form-label" for="password_confirmation">{{ __('Confirm Password') }}</label>
+                        <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" id="password_confirmation" name="password_confirmation" required autocomplete="new-password" aria-describedby="validation-password-confirmation">
+                        @error('password_confirmation')
+                            <div id="validation-password-confirmation" class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+
+                    {{-- <div class="form-check">
                         <input type="checkbox" class="form-check-input" id="auth-terms-condition-check">
-                        <label class="form-check-label" for="auth-terms-condition-check">I accept <a href="javascript: void(0);" class="text-dark">Terms and Conditions</a></label>
-                    </div>
-
-                
+                        <label class="form-check-label" for="auth-terms-condition-check">Aceptar 
+                            <a href="javascript: void(0);" class="text-dark">Terminos y condiciones</a>
+                        </label>
+                    </div> --}}
                     
                     <div class="mt-3 text-end">
-                        <button class="btn btn-primary w-sm waves-effect waves-light" type="submit">Register</button>
+                        <button class="btn btn-primary w-sm waves-effect waves-light" type="submit">{{ __('Register') }}</button>
                     </div>
 
-                    <div class="mt-4 text-center">
+                    {{-- <div class="mt-4 text-center">
                         <div class="signin-other-title">
-                            <h5 class="font-size-14 mb-3 title">Sign up using</h5>
+                            <h5 class="font-size-14 mb-3 title">Inicia sesioón usando</h5>
                         </div>
                         
 
@@ -59,10 +83,10 @@
                                 </a>
                             </li>
                         </ul>
-                    </div>
+                    </div> --}}
 
                     <div class="mt-4 text-center">
-                        <p class="text-muted mb-0">Already have an account ? <a href="auth-login.html" class="fw-medium text-primary"> Login</a></p>
+                        <p class="text-muted mb-0">{{ __('Already registered?') }} <a href="auth-login.html" class="fw-medium text-primary"> {{ __('Log in') }}</a></p>
                     </div>
                 </form>
             </div>
